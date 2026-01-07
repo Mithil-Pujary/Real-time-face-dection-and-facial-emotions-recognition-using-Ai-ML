@@ -1,0 +1,21 @@
+Creating a Virtual Environment 
+Create venv 
+"python -m venv venv"
+
+Activate venv
+"venv\Scripts\activate"
+
+Install Required Libraries
+Upgrade pip
+"pip install --upgrade pip"
+
+Install libraries 
+"pip install opencv-python pillow numpy"
+"pip install mediapipe"
+
+| Module  | Purpose                        |
+| ------- | ------------------------------ |
+| tkinter | GUI framework                  |
+| ttk     | Better-looking buttons         |
+| cv2     | Webcam access                  |
+| PIL     | Convert OpenCV image → Tkinter |
