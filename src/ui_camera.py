@@ -4,6 +4,8 @@ import cv2
 from PIL import Image, ImageTk
 import numpy as np
 import os
+import random
+
 
 class FaceDetectionApp:
     def __init__(self, root):
@@ -19,6 +21,9 @@ class FaceDetectionApp:
         self.video_width = 700
         self.video_height = 450
 
+        # Emotion labels (dummy for now)
+        self.emotions = ["Happy", "Sad", "Angry", "Fear", "Neutral", "Surprise"]
+        
         # --- UI Layout ---
         self.create_widgets()
         
@@ -130,8 +135,20 @@ class FaceDetectionApp:
         # Draw rectangles
         for (x, y, w, h) in faces:
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-            # Optional: Add Label above face
-            cv2.putText(frame, "Face", (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
+
+        # Dummy emotion prediction
+            emotion = random.choice(self.emotions)
+
+            # Display emotion label
+            cv2.putText(
+                frame,
+                emotion,
+                (x, y - 10),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.9,
+                (0, 255, 255),  # Yellow text
+                2
+            )
 
         # 2. Convert for Tkinter
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
